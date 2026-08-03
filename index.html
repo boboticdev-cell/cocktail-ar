@@ -102,9 +102,9 @@
     <div id="ui-overlay">Inquadra l'immagine nel menu</div>
 
     <a-scene 
-      mindar-image="imageTargetSrc: ./targets.mind; autoStart: true; uiLoading: yes; uiError: yes; uiScanning: no;" 
+      mindar-image="imageTargetSrc: ./targets.mind; filterMinCF: 0.0001; filterBeta: 0.001;" 
       color-space="sRGB" 
-      renderer="colorManagement: true; exposure: 1.2; toneMapping: ACESFilmic;" 
+      renderer="colorManagement: true, physicallyCorrectLights" 
       vr-mode-ui="enabled: false" 
       device-orientation-permission-ui="enabled: false">
 
