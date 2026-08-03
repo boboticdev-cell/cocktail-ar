@@ -105,8 +105,13 @@
     <div id="scan-guide"></div>
     <div id="ui-overlay">Inquadra l'immagine nel menu</div>
 
+    <!-- 
+      Nota sulle proporzioni: 
+      physicalTargetWidth: 0.1 indica che l'immagine stampata sul menu è larga 10 cm (0.1 metri).
+      Se l'immagine reale è larga ad esempio 15 cm, cambia questo valore in 0.15.
+    -->
     <a-scene 
-      mindar-image="imageTargetSrc: ./targets.mind; autoStart: true; uiLoading: yes; uiError: yes; uiScanning: no;" 
+      mindar-image="imageTargetSrc: ./targets.mind; physicalTargetWidth: 0.1; autoStart: true; uiLoading: yes; uiError: yes; uiScanning: no;" 
       color-space="sRGB" 
       renderer="colorManagement: true; exposure: 1.2; toneMapping: ACESFilmic;" 
       vr-mode-ui="enabled: false" 
@@ -127,12 +132,17 @@
 
       <!-- Target WebAR -->
       <a-entity id="target" mindar-image-target="targetIndex: 0">
-        <!-- Modello con rotazione perpendicolare (-90° su X) e glass-material applicato -->
+        <!-- 
+          Modello 3D:
+          - rotation="-90 0 0": Rende il bicchiere perpendicolare al menu cartaceo.
+          - position="0 0 0": Può essere aggiustato (es. 0 0 0.02) se la base del bicchiere deve alzarsi leggermente.
+          - scale="0.15 0.15 0.15": Dimensione reale scalata in proporzione al target.
+        -->
         <a-gltf-model 
           src="#drinkModel" 
           position="0 0 0" 
           rotation="-90 0 0" 
-          scale="0.5 0.5 0.5"
+          scale="0.15 0.15 0.15"
           glass-material="transmission: 0.95; roughness: 0.05; ior: 1.5">
         </a-gltf-model>
       </a-entity>
